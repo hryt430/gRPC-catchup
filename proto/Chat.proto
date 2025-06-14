@@ -1,0 +1,14 @@
+syntax = "proto3";
+package chat;
+option go_package = "github.com/hryt430/gRPC-catchup/chat";
+
+message Message {
+  string body = 1;
+}
+
+service ChatService {
+  rpc MessageUnary(Message) returns (Message);
+  rpc MessageServertream(Message) returns (stream Message);
+  rpc MessageClientStream(stream Message) returns (Message);
+  rpc MessageBiStreams(stream Message) returns (stream Message);
+}
